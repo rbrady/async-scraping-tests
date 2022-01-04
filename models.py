@@ -1,5 +1,6 @@
 from pydantic import BaseModel
 from typing import List, Any, Dict, Optional
+import ujson
 
 
 class PVulnerability(BaseModel):
@@ -15,6 +16,10 @@ class PVulnerability(BaseModel):
     Link: str
     FixedIn: Optional[List[Any]] = []
 
+    class Config:
+        json_loads = ujson.loads
+        json_dumps = ujson.dumps
+
 
 class PFixedIn(BaseModel):
     """
@@ -26,6 +31,10 @@ class PFixedIn(BaseModel):
     NamespaceName: str
     VersionFormat: str
     Version: str
+
+    class Config:
+        json_loads = ujson.loads
+        json_dumps = ujson.dumps
 
 
 # original models from amazon driver

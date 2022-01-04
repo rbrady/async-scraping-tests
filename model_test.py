@@ -22,11 +22,13 @@ model_data = {
 }
 
 
+@profile
 def pydantic_main():
     v = PVulnerability(**model_data)
     print(v.json())
 
 
+@profile
 def legacy_main():
     v = Vulnerability()
     v.Name = model_data['Name'],
@@ -50,9 +52,17 @@ def legacy_main():
 if __name__ == '__main__':
     start_time = time.time()
     legacy_main()
-    print("--- %s seconds ---" % (time.time() - start_time))
+    legacy_time = time.time() - start_time
+
 
     p_start_time = time.time()
     pydantic_main()
-    print("--- %s seconds ---" % (time.time() - p_start_time))
+    p_time = time.time() - p_start_time
+
+    print(f"Legacy --- {legacy_time} seconds ---")
+    print(f"Pydantic --- {p_time} seconds ---")
+
+    print("Legacy is faster: %s" % (legacy_time < p_time))
+    print("Pydantic is faster: %s" % (p_time < legacy_time))
+
 
