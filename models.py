@@ -3,7 +3,14 @@ from typing import List, Any, Dict, Optional
 import ujson
 
 
-class PVulnerability(BaseModel):
+class AnchoreBaseModel(BaseModel):
+
+    class Config:
+        json_loads = ujson.loads
+        json_dumps = ujson.dumps
+
+
+class PVulnerability(AnchoreBaseModel):
     """
     Class representing the record to be returned. Uses strange capitalization
     to be backwards compatible in the json output with previous version of feed data.
@@ -16,12 +23,8 @@ class PVulnerability(BaseModel):
     Link: str
     FixedIn: Optional[List[Any]] = []
 
-    class Config:
-        json_loads = ujson.loads
-        json_dumps = ujson.dumps
 
-
-class PFixedIn(BaseModel):
+class PFixedIn(AnchoreBaseModel):
     """
     Class representing a fix record for return back to the service from the driver. The semantics of the version are:
     "None" -> Package is vulnerable and no fix available yet
@@ -31,10 +34,6 @@ class PFixedIn(BaseModel):
     NamespaceName: str
     VersionFormat: str
     Version: str
-
-    class Config:
-        json_loads = ujson.loads
-        json_dumps = ujson.dumps
 
 
 # original models from amazon driver
