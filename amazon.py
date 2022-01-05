@@ -74,7 +74,7 @@ async def get_fixes(summary):
     arch_patterns = [r'src\b.+\.src', r'noarch\b.+\.noarch', r'x86_64\b.+\.x86_64']
     item_html = await download(summary.url)
     # parse alas html for fixes
-    s = bs(item_html)
+    s = bs(item_html, features="html.parser")
     npdivs = [div for div in s.find_all(['div'])
               if div.attrs and div.attrs.get('id') == 'new_packages']
     fixes = []

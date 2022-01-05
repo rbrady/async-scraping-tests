@@ -1,0 +1,8 @@
+aiohttp
+beautifulsoup4
+pydantic
+ujson
+xmltodict
+
+anchore-enterprise @ git+https://github.com/anchore/enterprise@beba7fd2ab789262f713a29c0d8649c3df71e985
+
