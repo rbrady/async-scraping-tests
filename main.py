@@ -1,4 +1,5 @@
-from .parsers import OneParser, AnotherParser
+from parsers import OneParser, AnotherParser
+
 
 def main():
     print("Welcome!")
