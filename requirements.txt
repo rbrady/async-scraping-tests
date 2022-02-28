@@ -3,6 +3,10 @@ beautifulsoup4
 pydantic
 ujson
 xmltodict
+lxml
+uvloop
+selectolax
+httpx
 
-anchore-enterprise @ git+https://github.com/anchore/enterprise@beba7fd2ab789262f713a29c0d8649c3df71e985
+# anchore-enterprise @ git+https://github.com/anchore/enterprise@cb1b5712db53a77296b48cd9fcad949871d97176
 
